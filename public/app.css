@@ -1,0 +1,12 @@
+body{
+  font-family: 'Hind Madurai', sans-serif;
+}
+
+.active div{
+  height: 350px;
+  margin-top: 0px;
+}
+
+.owl-carousel .owl-stage{
+  padding-left: 10px !important;
+}

@@ -1,0 +1,75 @@
+directive @cacheControl(maxAge: Int, scope: CacheControlScope) on FIELD_DEFINITION | OBJECT | INTERFACE
+
+enum CacheControlScope {
+  PUBLIC
+  PRIVATE
+}
+
+type Chapter {
+  name: String
+  description: String
+  image: String
+  lessons: [Lesson]
+  quiz: [Quiz]
+  feedback: Boolean
+}
+
+type Lesson {
+  name: String
+  description: String
+  type: String
+  timeToFinish: String
+  thumbnailImageUrl: [ThumbnailImage]
+  videoUrl: String
+  audioUrl: String
+  feedback: Boolean
+}
+
+type Level {
+  name: String
+  description: String
+  module: [Module]
+}
+
+type Module {
+  name: String
+  description: String
+  unlockTime: Int
+  image: String
+  chapter: [Chapter]
+}
+
+type Option {
+  text: String
+  image: String
+  correct: Boolean
+}
+
+type Query {
+  levels: [Level]
+}
+
+type Question {
+  questionType: String
+  description: String
+  answerOptions: [Option]
+  numOptions: Int
+  correctExplanation: String
+  incorrectExplanation: String
+}
+
+type Quiz {
+  questions: [Question]
+  feedback: Boolean
+  successCriteria: Int
+  successContent: String
+  retryContent: String
+}
+
+type ThumbnailImage {
+  url: String
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
