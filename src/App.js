@@ -37,6 +37,10 @@ import {
   ClientFirst,
   ClientSecond,
   ClientThird,
+  FullPage,
+  Menu,
+  MenuWrapper,
+  MenuItem
 } from './styledd';
 
 class App extends React.Component {
@@ -59,6 +63,7 @@ class App extends React.Component {
   render(){
     return(
     <SectionWrapper>
+      <FullPage menuClicked={this.state.menuClicked}>
       {!this.state.showInitialAnim &&
       <React.Fragment>
         <AppLogoContainer><AppLogo selectedPage={this.state.selectedPage}/></AppLogoContainer>
@@ -82,10 +87,10 @@ class App extends React.Component {
           </AppMenuWrapper>
         </React.Fragment>
       }
-      {
+      {/* {
         this.state.showInitialAnim &&
         <InitialAnimBg onClick={() => this.showFlash()}><CameraWrapper><CameraFlash showFlash={this.state.showFlash}/></CameraWrapper></InitialAnimBg>
-      }
+      } */}
       {
         this.state.selectedPage === 2 &&
         <React.Fragment>
@@ -134,6 +139,18 @@ class App extends React.Component {
             </WorkSlider>
           </WorkBg>
         </React.Fragment>
+      }
+      </FullPage>
+      {(this.state.menuClicked === undefined || this.state.menuClicked === false) && <Menu onClick={() => this.setState({ menuClicked: true })}>Explore</Menu>}
+      {this.state.menuClicked && <Menu onClick={() => this.setState({ menuClicked: false })}>X</Menu>}
+      {
+        this.state.menuClicked &&
+        <MenuWrapper>
+          <MenuItem>Portraits</MenuItem>
+          <MenuItem>Studio</MenuItem>
+          <MenuItem>Outdoor</MenuItem>
+          <MenuItem>Book a shoot</MenuItem>
+        </MenuWrapper>
       }
     </SectionWrapper>
     );

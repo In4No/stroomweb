@@ -15,14 +15,103 @@ import Client1 from './clientImages/client1.jpg';
 import Client2 from './clientImages/client2.jpg';
 import Client3 from './clientImages/client3.jpg';
 
+import Cross from './images/cross.png';
+
+import CoverImage from './homeImages/IMG_4127.jpg';
+
 export const SectionWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   height: 100vh;
-  max-width: 600px;
+  // max-width: 600px;
   margin: 0 auto;
+  background-color: #191919;
+  position: relative;
+  background-image: url(${Cross});
+`;
+
+export const Menu = styled.div`
+  text-transform: uppercase;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  padding: 50px;
+  color: #ffd22c;
+  font-weight: 400;
+  cursor: pointer;
+  font-size: 20px;
+  min-width: 200px;
+  text-align: center;
+`;
+
+export const MenuRevealAnim = keyframes`
+  0% {
+    right: -200px;
+  }
+  100% {
+    right: 0px;
+  }
+`;
+
+export const MenuWrapper = styled.div`
+  position: fixed;
+  top: 126px;
+  width: 141px;
+  bottom: 126px;
+  right: -200px;
+  padding: 50px 50px 50px 50px;
+  animation: ${MenuRevealAnim} 0.5s ease-in-out;
+  animation-fill-mode: forwards;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: column;
+  background-color: #000000;
+  -webkit-box-shadow: 0px 0px 31px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 31px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 31px 0px rgba(0,0,0,0.75);
+`;
+
+export const MenuItem = styled.div`
+  color: #ffd22c;
+  cursor: pointer;
+  text-transform: uppercase;
+  text-align: left;
+`;
+
+export const goBackAnim = keyframes`
+  0% {
+    transform: perspective(1200px) translateZ(0px) translateX(0px) translateY(0px) rotateY(30deg) scale(1, .9);
+  }
+  100% {
+    transform: none;
+  }
+`;
+
+export const comeForwardAnim = keyframes`
+  0% {
+    transform: none;
+  }
+  100% {
+    transform: perspective(1200px) translateZ(0px) translateX(0px) translateY(0px) rotateY(30deg) scale(1, .9);
+  }
+`;
+
+export const FullPage = styled.div`
+  width: 100%;
+  height: 100vh;
+  background-color: #000000;
+  animation: ${props => props.menuClicked !== undefined ? !props.menuClicked ? goBackAnim : comeForwardAnim : null} 0.5s ease-in-out;
+  animation-fill-mode: forwards;
+  -webkit-box-shadow: 0px 0px 31px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 31px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 31px 0px rgba(0,0,0,0.75);
+  background-image: url(${CoverImage});
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 `;
 
 export const WorkBgAnim = keyframes`
